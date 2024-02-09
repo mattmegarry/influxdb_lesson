@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  influxdb:
+    image: influxdb:2.7.4
+    restart: always
+    env_file:
+      - "./.env"
+    environment:
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./influxdb2:/var/lib/influxdb2
